@@ -4,6 +4,7 @@ import 'normalize.css'
 import './app/styles/styles.css'
 import { Todo } from './components/Todo'
 import { createGlobalStyle } from 'styled-components'
+import { RootStateOrAny, useSelector } from 'react-redux'
 
 const GlobalStyle = createGlobalStyle`
 body {
@@ -12,10 +13,11 @@ body {
 `
 
 const App = () => {
+    const isDone = useSelector((state: RootStateOrAny) => state.main.isDone)
     return (
         <>
             <GlobalStyle />
-            <Todo />
+            <Todo isDone={isDone} />
         </>
     )
 }

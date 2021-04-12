@@ -1,21 +1,16 @@
 import React from 'react'
-import styled from 'styled-components'
+import { Container } from '../app/styles/styles'
 import { TodoItem } from './TodoItem'
 
-const Container = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    font-family: 'Roboto', sans-serif;
-    width: 500px;
-    margin: auto;
-`
+interface PropsI {
+    isDone: boolean
+}
 
-export const Todo = () => {
+export const Todo = (props: PropsI) => {
     return (
         <Container>
-            <TodoItem title="hey" isDone={false} number={1} />
+            <TodoItem title="hey" isDone={props.isDone} number={1} />
+            <TodoItem title="hey" isDone={props.isDone} number={1} />
         </Container>
     )
 }
