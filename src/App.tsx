@@ -1,23 +1,16 @@
-import React, { useState } from 'react'
-import logo from './logo.svg'
+import React from 'react'
 import 'normalize.css'
-import './app/styles/styles.css'
 import { Todo } from './components/Todo'
-import { createGlobalStyle } from 'styled-components'
-import { RootStateOrAny, useSelector } from 'react-redux'
+import autosize from 'autosize'
+import { GlobalStyle } from './app/styles/styles'
 
-const GlobalStyle = createGlobalStyle`
-body {
-    background: rgba(75, 194, 197, 1);
-}
-`
+autosize(document.querySelectorAll('textarea'))
 
 const App = () => {
-    const isDone = useSelector((state: RootStateOrAny) => state.main.isDone)
     return (
         <>
             <GlobalStyle />
-            <Todo isDone={isDone} />
+            <Todo />
         </>
     )
 }

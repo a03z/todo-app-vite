@@ -1,29 +1,26 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { IsDoneIcon, Item, ItemNumber } from '../app/styles/styles'
 import { CheckIcon, XIcon } from '@heroicons/react/solid'
-import { useDispatch } from 'react-redux'
-import { changeIsDone } from '../app/redux/store'
 
 interface ItemProps {
-    title: string
-    isDone: boolean
+    message: string
     number: number
 }
 
-export const TodoItem = ({ title, isDone, number }: ItemProps) => {
-    const dispatch = useDispatch()
+export const TodoItem = ({ message, number }: ItemProps) => {
+    const [isDone, setDone] = useState(false)
 
     const onDone = () => {
-        dispatch(changeIsDone(true))
+        setDone(true)
     }
     const onUnDone = () => {
-        dispatch(changeIsDone(false))
+        setDone(false)
     }
 
     return (
         <Item>
             <ItemNumber>{number}</ItemNumber>
-            <p>{title}</p>
+            <p>{message}</p>
             {isDone ? (
                 <IsDoneIcon onClick={onUnDone}>
                     <CheckIcon className="isDoneIcon" />

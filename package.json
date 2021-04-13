@@ -9,7 +9,9 @@
   "dependencies": {
     "@heroicons/react": "^1.0.0",
     "@reduxjs/toolkit": "^1.5.1",
+    "@types/autosize": "^3.0.7",
     "@types/styled-components": "^5.1.9",
+    "autosize": "^4.0.2",
     "node-sass": "^5.0.0",
     "normalize.css": "^8.0.1",
     "react": "^17.0.0",

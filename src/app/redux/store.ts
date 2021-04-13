@@ -7,32 +7,40 @@ declare global {
     }
 }
 
-const CHANGE_IS_DONE: string = 'CHANGE_IS_DONE'
+const ADD_TODO: string = 'ADD_TODO'
 
-let initialState = {
-    isDone: false,
+type TodoI = [{ message?: string; id: number }]
+
+let initialState: { todos: TodoI } = {
+    todos: [{ message: 'Add more TODOS!!!', id: 0 }],
 }
 
 interface ActionI {
     type: string
-    status: boolean
+    todoMessage: string
 }
 
 const reducer = (state = initialState, action: ActionI) => {
     switch (action.type) {
-        case CHANGE_IS_DONE:
+        case ADD_TODO:
             return {
                 ...state,
-                isDone: action.status,
+                todos: [
+                    ...state.todos,
+                    {
+                        message: action.todoMessage,
+                        id: ++state.todos[0].id,
+                    },
+                ],
             }
         default:
             return state
     }
 }
 
-export const changeIsDone = (status: boolean) => ({
-    type: CHANGE_IS_DONE,
-    status,
+export const addTodo = (todoMessage: string) => ({
+    type: ADD_TODO,
+    todoMessage,
 })
 
 let reducers = combineReducers({ main: reducer })

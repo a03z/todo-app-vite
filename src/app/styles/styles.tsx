@@ -1,4 +1,10 @@
-import styled from 'styled-components'
+import styled, { createGlobalStyle } from 'styled-components'
+
+export const GlobalStyle = createGlobalStyle`
+body {
+    background: rgba(75, 194, 197, 1);
+}
+`
 
 export const Item = styled.div`
     display: grid;
@@ -26,4 +32,26 @@ export const Container = styled.div`
     font-family: 'Roboto', sans-serif;
     width: 500px;
     margin: auto;
+`
+
+export const Textarea = styled.textarea`
+    border: 1px solid rgba(120, 254, 224, 1);
+    outline: none;
+    padding: 0;
+    background: white;
+    width: 90%;
+    resize: none;
+`
+
+export const AddTodoStyle = styled.div`
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+
+    .icon {
+        cursor: pointer;
+        width: 25px;
+        height: 25px;
+    }
 `
