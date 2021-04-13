@@ -9,10 +9,10 @@ declare global {
 
 const ADD_TODO: string = 'ADD_TODO'
 
-type TodoI = [{ message?: string; id: number }]
+type TodoI = [{ message?: string; id?: number }?]
 
 let initialState: { todos: TodoI } = {
-    todos: [{ message: 'Add more TODOS!!!', id: 0 }],
+    todos: [],
 }
 
 interface ActionI {

@@ -13,15 +13,13 @@ export const Todo = () => {
     const todos = useSelector((state: RootStateOrAny) => state.main.todos)
 
     let Todos = todos.map((todo: TodoI) => {
-        return (
-            <TodoItem key={todo.id} message={todo.message} number={todo.id} />
-        )
+        return <TodoItem key={todo.id} message={todo.message} />
     })
 
     return (
         <Container>
-            {Todos}
             <AddTodo />
+            {Todos}
         </Container>
     )
 }

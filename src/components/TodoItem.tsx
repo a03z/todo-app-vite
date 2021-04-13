@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
-import { IsDoneIcon, Item, ItemNumber } from '../app/styles/styles'
+import { IsDoneIcon, Item } from '../app/styles/styles'
 import { CheckIcon, XIcon } from '@heroicons/react/solid'
 
 interface ItemProps {
     message: string
-    number: number
+    key: number
 }
 
-export const TodoItem = ({ message, number }: ItemProps) => {
+export const TodoItem = ({ message }: ItemProps) => {
     const [isDone, setDone] = useState(false)
 
     const onDone = () => {
@@ -19,17 +19,16 @@ export const TodoItem = ({ message, number }: ItemProps) => {
 
     return (
         <Item>
-            <ItemNumber>{number}</ItemNumber>
-            <p>{message}</p>
             {isDone ? (
                 <IsDoneIcon onClick={onUnDone}>
-                    <CheckIcon className="isDoneIcon" />
+                    <XIcon color="red" className="isDoneIcon" />
                 </IsDoneIcon>
             ) : (
                 <IsDoneIcon onClick={onDone}>
-                    <XIcon className="isDoneIcon" />
+                    <CheckIcon color="lime" className="isDoneIcon" />
                 </IsDoneIcon>
             )}
+            <p>{message}</p>
         </Item>
     )
 }
