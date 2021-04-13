@@ -17,19 +17,19 @@ let initialState: { todos: TodoI } = {
 
 interface ActionI {
     type: string
-    todoMessage: string
+    message: string
+    id: number
 }
 
-const reducer = (state = initialState, action: ActionI) => {
+let reducer = (state = initialState, action: ActionI) => {
     switch (action.type) {
         case ADD_TODO:
             return {
-                ...state,
                 todos: [
                     ...state.todos,
                     {
-                        message: action.todoMessage,
-                        id: ++state.todos[0].id,
+                        message: action.message,
+                        id: action.id,
                     },
                 ],
             }
@@ -38,9 +38,10 @@ const reducer = (state = initialState, action: ActionI) => {
     }
 }
 
-export const addTodo = (todoMessage: string) => ({
+export const addTodo = (message: string, id: number) => ({
     type: ADD_TODO,
-    todoMessage,
+    message,
+    id,
 })
 
 let reducers = combineReducers({ main: reducer })
@@ -49,8 +50,3 @@ let store = createStore(reducers)
 
 window.__store__ = store
 export default store
-
-// Infer the `RootState` and `AppDispatch` types from the store itself
-export type RootState = ReturnType<typeof store.getState>
-// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
-export type AppDispatch = typeof store.dispatch

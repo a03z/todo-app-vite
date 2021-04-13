@@ -1,20 +1,51 @@
 import { CheckCircleIcon } from '@heroicons/react/solid'
-import React from 'react'
+import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { AddTodoStyle, Textarea } from '../app/styles/styles'
+import {
+    AddTodoButton,
+    AddTodoForm,
+    AddTodoStyle,
+    Textarea,
+} from '../app/styles/styles'
 import { addTodo } from '../app/redux/store'
+import { useForm } from 'react-hook-form'
+
+type Inputs = {
+    example: string
+    exampleRequired: string
+}
 
 export const AddTodo = () => {
     const dispatch = useDispatch()
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm<Inputs>()
 
-    const addNewTodo = () => {
-        dispatch(addTodo('asdasd'))
+    let [counter, setCounter] = useState(0)
+    const addNewTodo = (message: string) => {
+        setCounter(++counter)
+        dispatch(addTodo(message, counter))
+        console.log('sent')
     }
 
+    const onSubmit = (data: any) => {
+        let message = data.example
+        addNewTodo(message)
+    }
     return (
         <AddTodoStyle>
-            <Textarea name="addTodo" />
-            <CheckCircleIcon onClick={addNewTodo} className="icon" />
+            <AddTodoForm onSubmit={handleSubmit(onSubmit)}>
+                <input
+                    className="field"
+                    {...register('example', { required: true })}
+                />
+                <AddTodoButton type="submit">
+                    <CheckCircleIcon className="icon" />
+                </AddTodoButton>
+                {errors.example && <span>This field is required</span>}
+            </AddTodoForm>
         </AddTodoStyle>
     )
 }

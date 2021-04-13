@@ -1,15 +1,21 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
-import { RootState } from '../app/redux/store'
+import { RootStateOrAny, useSelector } from 'react-redux'
 import { Container } from '../app/styles/styles'
 import { AddTodo } from './AddTodo'
 import { TodoItem } from './TodoItem'
 
-export const Todo = () => {
-    const todos = useSelector((state: RootState) => state.main.todos)
+interface TodoI {
+    message: string
+    id: number
+}
 
-    let Todos = todos.map((t) => {
-        return <TodoItem key={t.id} message={t.message} number={t.id} />
+export const Todo = () => {
+    const todos = useSelector((state: RootStateOrAny) => state.main.todos)
+
+    let Todos = todos.map((todo: TodoI) => {
+        return (
+            <TodoItem key={todo.id} message={todo.message} number={todo.id} />
+        )
     })
 
     return (

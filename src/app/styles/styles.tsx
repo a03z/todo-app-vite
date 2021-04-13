@@ -13,6 +13,7 @@ export const Item = styled.div`
     border: 1px solid rgba(120, 254, 224, 1);
     background: white;
     width: 100%;
+    margin-top: 5px;
 `
 
 export const ItemNumber = styled.span`
@@ -53,5 +54,28 @@ export const AddTodoStyle = styled.div`
         cursor: pointer;
         width: 25px;
         height: 25px;
+    }
+`
+
+export const AddTodoButton = styled.button`
+    outline: none;
+    border: 0;
+    background: none;
+`
+
+export const AddTodoForm = styled.form`
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px;
+    justify-content: space-around;
+    .field {
+        border: 1px solid rgba(120, 254, 224, 1);
+        outline: none;
+        padding: 0;
+        background: white;
+        width: 90%;
+        height: 25px;
+        resize: none;
     }
 `
