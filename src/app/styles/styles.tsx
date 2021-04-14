@@ -2,7 +2,9 @@ import styled, { createGlobalStyle } from 'styled-components'
 
 export const GlobalStyle = createGlobalStyle`
     body {
-        background:rgb(69 87 95);
+        background: url('https://sun1-84.userapi.com/impg/kPWXuenIXYqcqEviXVjxXIdoP9wSs9ptBv8RcA/1JJ11gNANqA.jpg?size=1280x720&quality=96&sign=bbfebc8f0db72a0d3734786db7333168&type=album') no-repeat;
+        background-size: cover;
+        height: 100vh;
     }
 `
 
@@ -11,7 +13,7 @@ export const Header = styled.div`
     border: 3px solid #ffffff;
     border-radius: 8px;
     width: 40%;
-    margin: 0 auto;
+    margin: 30px auto;
     font-family: 'Poppins', sans-serif;
     @media (max-width: 1400px) {
         width: 600px;
