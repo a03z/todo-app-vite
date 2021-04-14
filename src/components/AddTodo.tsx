@@ -37,9 +37,6 @@ export const AddTodo = () => {
                     placeholder="What you wanna do today?"
                     {...register('example', { required: true })}
                 />
-                {/* <AddTodoButton type="submit">
-                    <CheckCircleIcon className="icon" />
-                </AddTodoButton> */}
                 {errors.example && <span>This field is required</span>}
             </AddTodoForm>
         </AddTodoStyle>
